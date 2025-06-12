@@ -1,0 +1,8 @@
+README.md
+main.py
+pyproject.toml
+dafluffypotato_platformer.egg-info/PKG-INFO
+dafluffypotato_platformer.egg-info/SOURCES.txt
+dafluffypotato_platformer.egg-info/dependency_links.txt
+dafluffypotato_platformer.egg-info/requires.txt
+dafluffypotato_platformer.egg-info/top_level.txt
