@@ -1,4 +1,4 @@
-# Cypher - Message Encryption and Decryption 
+# Cypher - Message Encryption and Decryption
 
 import string as ss
 
@@ -16,33 +16,53 @@ def encrypt(text: str):
 		if let in alpha_lower:
 			ind = alpha_lower.find(let)
 			print(f"{let}{ind}")
-			cypher += translocate_ind(ind, alpha_lower, translocate_by)
+			cypher += translocate_ind(ind, alpha_lower, translocate_by, 'forward')
 			
 		elif let in alpha_upper:
 			ind = alpha_upper.find(let)
 			print(f"{let}{ind}")
-			cypher += translocate_ind(ind, alpha_upper, translocate_by)
+			cypher += translocate_ind(ind, alpha_upper, translocate_by, 'forward')
 			
 		else:
 			cypher += let
 	print(cypher)
 	return cypher
 			
-def translocate_ind(base_ind, cypher, by_n):
+def translocate_ind(
+		base_ind: int,
+		cypher: str,
+		by_n: int = 13,
+		direction: str = ['forward', 'backward']):
 	length_cypher = len(cypher)
-	
-	sum_ind = base_ind + by_n
-	if sum_ind > length_cypher:
-		over_by = sum_ind - length_cypher
-		index0 = over_by - 1
-		
-		encrypt_let = cypher[index0]
+
+	if direction == 'forward':
+		sum_ind = base_ind + by_n
+		if sum_ind > length_cypher:
+			over_by = sum_ind - length_cypher
+
+			shifted_let = cypher[over_by]
+
+		else:
+			shifted_let = cypher[sum_ind]
+
+		print(f"{cypher[base_ind]}-->{shifted_let}")
 
 	else:
-		encrypt_let =  cypher[sum_ind]
-	
-	print(f"{cypher[base_ind]}-->{encrypt_let}")
-	return encrypt_let
+		sum_ind = base_ind - by_n
+		if sum_ind < 0:
+			over_by = sum_ind - length_cypher
+
+			shifted_let = cypher[over_by]
+
+		else:
+			shifted_let = cypher[sum_ind]
+
+		print(f"{cypher[base_ind]}-->{shifted_let}")
+
+
+	return shifted_let
 
 encrypt(secret)
+
+
 		

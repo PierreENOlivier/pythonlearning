@@ -1,0 +1,22 @@
+[project]
+name = "dafluffypotato-platformer"
+version = "0.1.0"
+description = "Platformer Games in Pygame-CE"
+authors = [ 
+    {name = "Pierre Olivier", email = ""}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "numpy>=2.3.0",
+    "pygame-ce>=2.5.5",
+    "setuptools>=65.5.1"
+]
+
+[tool.uv]
+package = true
+
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple"
+default = true
