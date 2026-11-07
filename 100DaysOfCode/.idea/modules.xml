@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/100DaysOfCode.iml" filepath="$PROJECT_DIR$/.idea/100DaysOfCode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/100DaysOfPython_Days16_100.iml" filepath="$PROJECT_DIR$/.idea/100DaysOfPython_Days16_100.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/100daysofcode.iml" filepath="$PROJECT_DIR$/.idea/100daysofcode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/100daysofcode@1.iml" filepath="$PROJECT_DIR$/.idea/100daysofcode@1.iml" />
     </modules>
   </component>
 </project>
