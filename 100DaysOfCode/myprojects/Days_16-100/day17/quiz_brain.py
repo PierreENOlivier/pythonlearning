@@ -1,5 +1,14 @@
 # Handles the quiz
 
+import html
+
+ANSWER_MAPPING = {
+    "true": "True",
+    "t": "True",
+    "false": "False",
+    "f": "False"
+}
+
 class QuizBrain:
     def __init__(
             self,
@@ -13,7 +22,7 @@ class QuizBrain:
 
         current_question = self.question_list[self.question_number]
         self.question_number += 1
-        user_answer = input(f"Q.{self.question_number}: {current_question.text} (True/False):  ")
+        user_answer = input(f"Q.{self.question_number}: {html.unescape(current_question.text)} (True/False):  ")
 
         self.check_answer(user_answer, current_question.answer)
 
@@ -24,13 +33,19 @@ class QuizBrain:
         return self.question_number < len(self.question_list)
 
     def check_answer(self, user_answer, correct_answer):
-        if user_answer.lower() == correct_answer.lower():
+        user = ANSWER_MAPPING.get(user_answer.strip().lower()).lower()
+
+        correct = correct_answer.strip().lower()
+
+        if user is None:
+            print("Invalid answer.")
+        elif user == correct:
             print("Correct!")
             self.score += 1
         else:
             print("Incorrect!")
         print(f"The correct answer was: {correct_answer}.")
-        print(f"Your current score is: {self.score}/{self.question_number}.")
+
 
 
 
