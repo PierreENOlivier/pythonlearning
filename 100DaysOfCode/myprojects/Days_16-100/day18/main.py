@@ -1,8 +1,8 @@
-from operator import truediv
-from turtle import Turtle, Screen, colormode
+import turtle
+from turtle import Turtle, Screen
 from move import *
 from utils import *
-import heroes
+# import heroes
 import time
 
 skip_shape = True
@@ -12,8 +12,8 @@ skip_random_walk = False
 reset_screen = False
 
 timy = Turtle()
-timy.name = heroes.gen()
-print(timy.name)
+# timy.name = heroes.gen()
+# print(timy.name)
 screen = Screen()
 
 if not skip_shape:
@@ -36,7 +36,7 @@ if not skip_sides:
 
 if not skip_random_walk:
     timy.speed(8)
-    colormode(255)
+    turtle.colormode(255)
     random_walk(timy, 200, has_random_color= True, walk=30)
     time.sleep(2)
     if reset_screen:
