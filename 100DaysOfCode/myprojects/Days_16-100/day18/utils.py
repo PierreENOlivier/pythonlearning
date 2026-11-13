@@ -1,5 +1,6 @@
 import math
 import tkinter.font
+from typing import Tuple
 
 from turtle import Turtle
 from move import draw_square
@@ -24,11 +25,13 @@ def visualize_palette(palette: list[str], size: int = 10):
         size=8,
         weight="normal"
     )
-    width_text = font.measure(palette[0])
+    width_text = font.measure(str(palette[0]))
     height_text = font.metrics("linespace")
     margin_pos_x = max(size + gap, width_text + gap)
     height_position = height_text + size + gap
 
+    # TODO
+    # Consider the size of the screen, re-arrange accordingly
 
     x_pos = [x for x in range((-margin_pos_x * 2 ), (margin_pos_x * 2 + 1), margin_pos_x)]
     y_pos = [-1 * val
@@ -70,3 +73,9 @@ def visualize_palette(palette: list[str], size: int = 10):
             index += 1
 
 
+
+def reset_screen_click_on_turtle(screen):
+    def reset(x, y):
+        screen.reset()
+
+    return reset

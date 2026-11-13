@@ -4,6 +4,11 @@ from random import randint, choice
 from dataclasses import dataclass
 
 from colors import COLORS, random_color
+from coordinates import (
+    get_upper_corner_position,
+    calculate_xy_coordinates,
+    get_dimensions_screen
+)
 
 def paint_every_n(brush, n_times, by):
     """
@@ -117,3 +122,63 @@ def draw_spirograph(angle_shift):
 		pos = tim.heading()
 		print(pos)
 		tim.setheading(pos - angle_shift)
+
+
+def draw_damien_hirst(
+        colors,
+        screen,
+        size,
+        gap,
+        strict_gap
+):
+    """
+
+    :param colors: A list of colors to use for the drawing
+    :param screen: A screen object for coordinate calculations
+    :param size: Size of the circle
+    :param gap: Spacing between the circle
+    :param strict_gap: if True, the gap is added from the edge of the circle.
+        If False, the gap is added from the center of the circle to allow overlaps.
+    :return: None
+    """
+    brush = Turtle()
+    brush.speed(0)
+    bg = (255, 253, 237)
+    screen.bgcolor(bg)
+
+    # Circles are drawn from header at center position
+    # Consider the right and left radius of left and right circles
+    if strict_gap:
+        size_object = size * 2
+    else:
+        size_object = size
+
+    x, y = calculate_xy_coordinates(
+        x_y_start=get_upper_corner_position(brush, screen),
+        screen_dimension=get_dimensions_screen(screen),
+        size=size_object,
+        gap=gap
+    )
+
+    for xpos in x:
+        for ypos in y:
+            i_color = choice(colors)
+            if brush.pen()['pendown'] == True:
+                brush.penup()
+
+            # Circles are drawn from header
+            # To get the center, move y by the radius
+            brush.goto((xpos, ypos))
+
+            brush.color(i_color)
+            brush.fillcolor(i_color)
+
+            brush.pendown()
+            brush.begin_fill()
+
+            brush.circle(size)
+
+            brush.end_fill()
+
+
+    print("done")
