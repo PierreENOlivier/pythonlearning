@@ -102,3 +102,18 @@ def random_walk(brush, steps = 20, has_random_color: bool = True, walk: int = No
     brush.pen(old_settings)
 
 
+def draw_spirograph(angle_shift):
+	
+	tim = Turtle()
+	print("test")
+	tim.speed(0)
+	
+	n = int(360 // angle_shift)
+	
+	for _ in range(n):
+		
+		tim.pencolor(random_color())
+		tim.circle(100)
+		pos = tim.heading()
+		print(pos)
+		tim.setheading(pos - angle_shift)
