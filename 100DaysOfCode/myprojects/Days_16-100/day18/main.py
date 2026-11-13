@@ -37,7 +37,7 @@ if not skip_sides:
 if not skip_random_walk:
     timy.speed(8)
     turtle.colormode(255)
-    random_walk(timy, 200, has_random_color= True, walk=30)
+    random_walk(timy, 300, has_random_color= True)
     time.sleep(2)
     if reset_screen:
         timy.reset()
