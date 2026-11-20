@@ -1,6 +1,4 @@
-import tkinter
-
-from game import Game
+from tower_defense.game import Game
 
 
 game = Game()
